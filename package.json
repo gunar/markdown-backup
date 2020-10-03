@@ -1,6 +1,6 @@
 {
   "name": "markdown-backup",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Download remote images in markdown files and store them locally",
   "main": "markdown-backup.js",
   "dependencies": {
