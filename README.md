@@ -18,9 +18,14 @@ test
 
 0 directories, 1 file
 
+$ cat test/test.md
+# markdown-backup
+![alt](https://github.githubassets.com/images/icons/emoji/unicode/1f44b.png)
+
 $ markdown-backup.js "test/*.md"
 File path: test/*.md
 Processing: test/test.md
+Downloading: https://github.githubassets.com/images/icons/emoji/unicode/1f44b.png
 Done!
 
 $ tree test
@@ -30,6 +35,10 @@ test
 └── test.md
 
 1 directory, 2 files
+
+$ cat test/test.md
+# markdown-backup
+![alt](./images/0.png)
 ```
 
 ## Install
