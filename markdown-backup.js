@@ -22,7 +22,7 @@ Promise.all(
     console.log(`Processing: ${filePath}`);
     const content = fs.readFileSync(filePath, "utf8");
     const { dir: fileDir } = path.parse(filePath);
-    const imagesDir = `${fileDir}/images`
+    const imagesDir = `${fileDir || '.'}/images`
     try {
       fs.mkdirSync(imagesDir);
     } catch (e) {
@@ -38,6 +38,11 @@ Promise.all(
       content,
       /!\[[^\]]*\]\(([^)]*)\)/g,
       async (match, url, ...rest) => {
+        if (!/^http/.test(url)) {
+          // ignore local images
+          return match;
+        }
+        console.log(`Downloading: ${url}`)
         const res = await fetch(url);
         const contentType = res.headers.get("content-type");
         const extension = contentType.split("/")[1];
