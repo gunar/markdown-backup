@@ -1,0 +1,33 @@
+{
+  "name": "markdown-backup",
+  "version": "1.0.0",
+  "description": "Download remote images in markdown files and store them locally",
+  "main": "markdown-backup.js",
+  "dependencies": {
+    "glob": "^7.1.4",
+    "markdown-parser": "0.0.8",
+    "node-fetch": "^2.6.1",
+    "string-replace-async": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gunar/markdown-backup.git"
+  },
+  "keyword": [
+    "markdown-backup",
+    "markdown",
+    "Typora",
+    "move markdown"
+  ],
+  "bin": {
+    "markdown-backup": "markdown-backup.js"
+  },
+  "devDependencies": {
+    "prettier": "^2.1.2"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Gunar Gessner (gunar.dev)",
+  "license": "MIT"
+}

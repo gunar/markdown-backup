@@ -1,0 +1,6 @@
+.DS_Store
+repository/
+node_modules/
+package-lock.json
+target/
+backup/
