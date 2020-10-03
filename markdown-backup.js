@@ -1,5 +1,13 @@
 #!/usr/bin/env node
 
+//
+// This script was hacked together
+// in 45 minutes
+// on a Saturday morning.
+//
+// Be awesome to each other.
+//
+
 const fs = require("fs");
 const path = require("path");
 const glob = require("glob");
