@@ -32,7 +32,7 @@ test
 ## Install
 
 ```
-$ npm install markdown-backup -g
+$ npm install -g markdown-backup
 ```
 
 ## Use
