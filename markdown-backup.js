@@ -30,7 +30,7 @@ Promise.all(
     console.log(`Processing: ${filePath}`);
     const content = fs.readFileSync(filePath, "utf8");
     const { dir: fileDir } = path.parse(filePath);
-    const imagesDir = `${fileDir || '.'}/images`
+    const imagesDir = `${fileDir || "."}/images`;
     try {
       fs.mkdirSync(imagesDir);
     } catch (e) {
@@ -50,11 +50,16 @@ Promise.all(
           // ignore local images
           return match;
         }
-        console.log(`Downloading: ${url}`)
+        const destImagePath = `${imagesDir}/${Buffer.from(url).toString(
+          "base64"
+        )}`;
+        if (await checkFileExists(destImagePath)) {
+         console.log(`Skipping: ${url} (already exists)`)
+        }
         const res = await fetch(url);
         const contentType = res.headers.get("content-type");
-        const extension = contentType.split("/")[1];
-        const destImagePath = `${imagesDir}/${index}.${extension}`;
+        // const extension = contentType.split("/")[1];
+        console.log(`Downloading: ${url} to ${destImagePath}`);
         const dest = fs.createWriteStream(destImagePath);
         await res.body.pipe(dest);
         await new Promise((res, rej) => {
@@ -68,3 +73,9 @@ Promise.all(
 )
   .then(() => console.log("Done!"))
   .catch(console.error);
+
+async function checkFileExists(file) {
+  return fs.promises.access(file, fs.constants.F_OK)
+           .then(() => true)
+           .catch(() => false)
+}
