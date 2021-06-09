@@ -1,5 +1,7 @@
 # markdown-backup
 
+[![NPM](https://nodei.co/npm/markdown-backup.png?compact=true)](https://npmjs.org/package/markdown-backup)
+
 Download remote images in markdown files and store them locally.
 
 Images are stored in an `images` directory created by the tool itself.
