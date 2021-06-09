@@ -55,6 +55,7 @@ Promise.all(
         )}`;
         if (await checkFileExists(destImagePath)) {
           console.log(`Skipping: ${url} (already exists)`);
+          return match.replace(url, `./${path.relative(fileDir, destImagePath)}`);
         }
         const res = await fetch(url);
         const contentType = res.headers.get("content-type");
