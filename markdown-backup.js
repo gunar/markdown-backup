@@ -54,7 +54,7 @@ Promise.all(
           "base64"
         )}`;
         if (await checkFileExists(destImagePath)) {
-         console.log(`Skipping: ${url} (already exists)`)
+          console.log(`Skipping: ${url} (already exists)`);
         }
         const res = await fetch(url);
         const contentType = res.headers.get("content-type");
@@ -75,7 +75,8 @@ Promise.all(
   .catch(console.error);
 
 async function checkFileExists(file) {
-  return fs.promises.access(file, fs.constants.F_OK)
-           .then(() => true)
-           .catch(() => false)
+  return fs.promises
+    .access(file, fs.constants.F_OK)
+    .then(() => true)
+    .catch(() => false);
 }

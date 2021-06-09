@@ -1,8 +1,8 @@
-const assert = require('assert')
+const assert = require("assert");
 const childProcess = require("child_process");
 const fs = require("fs");
 
-const TEST_FILE = './test/test.md'
+const TEST_FILE = "./test/test.md";
 
 fs.writeFileSync(
   TEST_FILE,
@@ -11,9 +11,14 @@ fs.writeFileSync(
   "utf8"
 );
 
-childProcess.spawnSync("./markdown-backup.js", [ 'test/**.md' ], {stdio: 'inherit'});
+childProcess.spawnSync("./markdown-backup.js", ["test/**.md"], {
+  stdio: "inherit",
+});
 
-const output = fs.readFileSync(TEST_FILE, 'utf8')
+const output = fs.readFileSync(TEST_FILE, "utf8");
 
-assert.strictEqual(output, `# markdown-backup
-![alt](./images/0.png)`)
+assert.strictEqual(
+  output,
+  `# markdown-backup
+![alt](./images/0.png)`
+);
